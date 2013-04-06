@@ -41,11 +41,12 @@ module GreenButton
     end
 
     private
-    def parse_safe_int(value, title)
+    def parse_safe_int(value, title, default=0)
       begin
         Integer(value)
       rescue ArgumentError
-        raise InvalidFileFormat, "Missing #{title}"
+        # if value was not supplied, assume default instead
+        Integer(default)
       end
     end
 
