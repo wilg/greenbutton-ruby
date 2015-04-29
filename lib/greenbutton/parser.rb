@@ -18,7 +18,7 @@ module GreenButton
           tz, dstOffset = 
             parse_safe_int(doc.xpath("//espi:LocalTimeParameters/espi:tzOffset", ns).text, "Timezone Offset"),
             parse_safe_int(doc.xpath("//espi:LocalTimeParameters/espi:dstOffset", ns).text, "Daylight Saving Offset")
-        rescue TypeError
+        rescue TypeError, ArgumentError
           tz, dstOffset = 0, 0
         end
 
